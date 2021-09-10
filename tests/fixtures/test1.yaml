@@ -1,0 +1,10 @@
+hostname1:
+  pwwn:
+    - 2100000edec824dd
+    - 2100000edfg5fdd1
+  ip: 1.1.1.1
+hostname2:
+  pwwn:
+    - 2100e1e2asdasd40
+    - 2100000e1e23edrw
+  ip: 2.2.2.2
