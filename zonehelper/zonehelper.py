@@ -54,7 +54,7 @@ def get_commands():
     sp_mode_type = 'mode1' if os_type == 'VMware_ESX' else 'mode0'
     storage_initiator_commands = []
     storage_host_commands = []
-    san_commands = []
+    switch_commands = []
     for hostname in hosts_parsed.keys():
         server_ip = hosts_parsed[hostname]['ip']
         create_host_cmd = get_storage_host_cmd(hostname, os_type, server_ip, host_id)
@@ -68,9 +68,9 @@ def get_commands():
                 create_initiator_cmd = get_storage_initiator_cmd(hostname, pwwn_storage_style, port, server_type, host_id, sp_mode_type)
             storage_initiator_commands.append(create_initiator_cmd)
             pwwn_san_style = get_pwwn_san_style(pwwn)
-            create_san_cmd = get_san_cmd(pwwn_san_style, hostname, server_type, port)
-            san_commands.append(create_san_cmd)
+            create_switch_cmd = get_san_cmd(pwwn_san_style, hostname, server_type, port)
+            switch_commands.append(create_switch_cmd)
         host_id = str(int(host_id) + 1)
     save_commands('output/create_host_cmd', storage_host_commands)
     save_commands('output/create_initiator_cmd', storage_initiator_commands)
-    save_commands('output/create_san_cmd', san_commands)
+    save_commands('output/create_switch_cmd', switch_commands)
